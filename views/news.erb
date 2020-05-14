@@ -26,6 +26,32 @@
       <h1>News</h1>
     </div>
 
+    <div class="container mt-5">
+        <h3>
+        <%= "It is currently #{@forecast["current"]["temp"]} degrees C and #{@forecast["current"]["weather"][0]["main"]}" %>
+        </h3>
+    </div>   
+
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <% for news in @news["articles"] %>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<%= news["urlToImage"] %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= news["title"] %></h5>
+                            <p class="card-text"><%= news["content"] %></p>
+                            <a href="<%= news["url"] %>" class="btn btn-primary">link</a>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>  
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
