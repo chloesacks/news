@@ -37,13 +37,13 @@
     <div class="container mt-5">
         <div class="row">
             <% for news in @news["articles"] %>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="card" style="width: 18rem;">
                         <img src="<%= news["urlToImage"] %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%= news["title"] %></h5>
                             <p class="card-text"><%= news["content"] %></p>
-                            <a href="<%= news["url"] %>" class="btn btn-primary">link</a>
+                            <a href="<%= news["url"] %>" class="btn btn-primary card-btn">Read More</a>
                         </div>
                     </div>
                 </div>

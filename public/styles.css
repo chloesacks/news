@@ -1,3 +1,9 @@
-img {
-    height: 200px
+.card-btn {
+    color: #fff;
+    background-color: rgb(35, 35, 196);
+    border-color: #000dff03;
+    border-radius: 0.5rem
+}
+body {
+    background-color: azure
 }
