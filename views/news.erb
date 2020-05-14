@@ -26,12 +26,69 @@
       <h1>News</h1>
     </div>
 
-    <div class="container mt-5">
-        <h3>
-        <%= "It is currently #{@forecast["current"]["temp"]} degrees C and #{@forecast["current"]["weather"][0]["main"]}" %>
-        </h3>
-    </div>   
+    <hr>
 
+
+    <div class="container">
+        <div class="jumbotron jumbo-weather">
+            <h3 class="display-">Weather at Global Hub</h3>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h4>Current Weather:</h4>
+                    <h5>
+                        <%= @forecast["current"]["weather"][0]["main"] %>
+                    </h5>
+                    <h5>
+                        <%= @forecast["current"]["temp"] %> <sup>o</sup>C
+                    </h5>
+                </div>
+                <div class="col-sm-3">
+                    <% if @forecast["current"]["weather"][0]["main"] == "Clear" %>
+                        <img src="http://openweathermap.org/img/wn/01d@2x.png">
+                    <% elsif @forecast["current"]["weather"][0]["main"] == "Rain" %>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png">
+                    <% elsif @forecast["current"]["weather"][0]["main"] == "Clouds" %>
+                        <img src="http://openweathermap.org/img/wn/02d@2x.png">
+                    <% elsif @forecast["current"]["weather"][0]["main"] == "Snow" %>
+                        <img src="http://openweathermap.org/img/wn/13d@2x.png">
+                    <% elsif @forecast["current"]["weather"][0]["main"] == "Drizzle" %>
+                        <img src="http://openweathermap.org/img/wn/09d@2x.png">
+                    <% elsif @forecast["current"]["weather"][0]["main"] == "Thunderstorm" %>
+                        <img src="http://openweathermap.org/img/wn/11d@2x.png">
+                    <% else %>
+                        <img src="http://openweathermap.org/img/wn/50d@2x.png">
+                    <% end %>
+                </div>
+            </div>
+            <hr class="my-4">
+            <h4>7 Day Weather Forecast</h4>
+            <div class="row">
+                <% for day in @forecast["daily"] %>
+                    <div class="col-sm-1.8">
+                        <p><%= day["weather"][0]["main"] %></p>
+                        <% if day["weather"][0]["main"] == "Clear" %>
+                            <img src="http://openweathermap.org/img/wn/01d@2x.png">
+                        <% elsif day["weather"][0]["main"] == "Rain" %>
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png">
+                        <% elsif day["weather"][0]["main"] == "Clouds" %>
+                            <img src="http://openweathermap.org/img/wn/02d@2x.png">
+                        <% elsif day["weather"][0]["main"] == "Snow" %>
+                            <img src="http://openweathermap.org/img/wn/13d@2x.png">
+                        <% elsif day["weather"][0]["main"] == "Drizzle" %>
+                            <img src="http://openweathermap.org/img/wn/09d@2x.png">
+                        <% elsif day["weather"][0]["main"] == "Thunderstorm" %>
+                            <img src="http://openweathermap.org/img/wn/11d@2x.png">
+                        <% else %>
+                            <img src="http://openweathermap.org/img/wn/50d@2x.png">
+                        <% end %>
+                        <p><%= day["temp"]["max"] %> <sup>o</sup>C</p>
+                        <p><%= day["temp"]["min"] %> <sup>o</sup>C</p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 
 
     <div class="container mt-5">

@@ -7,3 +7,9 @@
 body {
     background-color: azure
 }
+
+.jumbo-weather {
+    margin-bottom: 2rem;
+    background-color: #00bcd41f;
+    border-radius: .3rem;
+}
