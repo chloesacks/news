@@ -1,15 +1,31 @@
-.card-btn {
-    color: #fff;
-    background-color: rgb(35, 35, 196);
-    border-color: #000dff03;
-    border-radius: 0.5rem
+.title {
+    text-align: center;
 }
+
 body {
     background-color: azure
 }
+
 
 .jumbo-weather {
     margin-bottom: 2rem;
     background-color: #00bcd41f;
     border-radius: .3rem;
+}
+
+.weather-title {
+    text-align: center;
+}
+
+.weather-forecast {
+    text-align: center;
+}
+
+
+/* news card button */
+.card-btn {
+    color: #fff;
+    background-color: rgb(35, 35, 196);
+    border-color: #000dff03;
+    border-radius: 0.5rem
 }

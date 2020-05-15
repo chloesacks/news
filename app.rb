@@ -24,9 +24,3 @@ get "/" do
 
   view "news"
 end
-
-# puts "It is currently #{forecast["current"]["temp"]} degrees F and #{forecast["current"]["weather"][0]["main"]}"
-# puts "Extended forecast:"
-# for day in forecast["daily"]
-#     puts "A high of #{day["temp"]["max"]}, a low of #{day["temp"]["min"]} and #{day["weather"][0]["main"]}."
-# end
