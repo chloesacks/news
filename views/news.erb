@@ -40,7 +40,7 @@
                         <%= @forecast["current"]["weather"][0]["main"] %>
                     </h5>
                     <h5>
-                        <%= @forecast["current"]["temp"] %> <sup>o</sup>C
+                        <%= @forecast["current"]["temp"].round(1) %> <sup>o</sup>C
                     </h5>
                 </div>
                 <div class="col-sm-3">
@@ -82,8 +82,8 @@
                         <% else %>
                             <img src="http://openweathermap.org/img/wn/50d@2x.png">
                         <% end %>
-                        <p><strong><%= day["temp"]["max"] %> <sup>o</sup>C</strong></p>
-                        <p><%= day["temp"]["min"] %> <sup>o</sup>C</p>
+                        <p><strong><%= day["temp"]["max"].round(1) %> <sup>o</sup>C</strong></p>
+                        <p><%= day["temp"]["min"].round(1) %> <sup>o</sup>C</p>
                     </div>
                 <% end %>
             </div>
