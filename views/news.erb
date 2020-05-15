@@ -66,7 +66,7 @@
             <div class="row weather-forecast">
                 <% for day in @forecast["daily"] %>
                     <div class="col-sm-1.8">
-                        <h5><%= day["weather"][0]["main"] %></h5>
+                        <h5 class="wf-title"><%= day["weather"][0]["main"] %></h5>
                         <% if day["weather"][0]["main"] == "Clear" %>
                             <img src="http://openweathermap.org/img/wn/01d@2x.png">
                         <% elsif day["weather"][0]["main"] == "Rain" %>
@@ -82,8 +82,8 @@
                         <% else %>
                             <img src="http://openweathermap.org/img/wn/50d@2x.png">
                         <% end %>
-                        <p><strong><%= day["temp"]["max"].round(1) %> <sup>o</sup>C</strong></p>
-                        <p><%= day["temp"]["min"].round(1) %> <sup>o</sup>C</p>
+                        <p class="wf-text1"><strong><%= day["temp"]["max"].round(1) %> <sup>o</sup>C</strong></p>
+                        <p class="wf-text2"><%= day["temp"]["min"].round(1) %> <sup>o</sup>C</p>
                     </div>
                 <% end %>
             </div>
