@@ -1,30 +1,45 @@
+.mt-5{
+    margin-bottom: 3rem!important;
+}
+
 .title {
     text-align: center;
+    color:snow
 }
 
 body {
-    background-color: azure
+    background-color: rebeccapurple; 
 }
 
-
-.jumbo-weather {
-    margin-bottom: 2rem;
-    background-color: #00bcd41f;
-    border-radius: .3rem;
+.weather_jumbo{
+    background-color: rgb(157, 132, 182);
+    color:snow;
 }
 
-.weather-title {
+h3.weather_jumbo{
     text-align: center;
+    margin-bottom: 3.5rem
 }
 
-.weather-forecast {
-    text-align: center;
+.col-sm-6{
+    text-align: center
 }
 
-/* news card button */
-.card-btn {
-    color: #fff;
-    background-color: rgb(35, 35, 196);
-    border-color: #000dff03;
-    border-radius: 0.5rem
+.col-sm{
+    text-align: center
+}
+
+h4{
+    text-align: center
+}
+
+.container-fluid {
+    padding-left: 30px!important;
+    padding-right: 30px!important
+}
+
+h6{
+    margin-bottom: 1.25rem;
+    color: snow;
+    text-shadow: 1.5px 1.5px blue
 }

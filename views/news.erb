@@ -9,47 +9,42 @@
     <!-- Swap out "Roboto" for the font(s) you want to use -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" crossorigin="anonymous">
-
-    <!-- Bootstrap CSS -->
+<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>News</title>
+    <title>Weather & News</title>
   </head>
   <body>
 
     <div class="container mt-5">
-      <h1 class="title">News Digest <span class="badge badge-secondary">KGH</span></h1>
+      <h1 class="title">Weather Forecast & Top News Stories</h1>
     </div>
 
-    <hr>
-
-
-    <div class="container">
-        <div class="jumbotron jumbo-weather">
-            <h3 class="weather-title">Weather at Global Hub</h3>
+    <div class="jumbotron weather_jumbo">
+        <div class="container-fluid">
+            <h3 class="weather_jumbo">Kellogg Global Hub Weather</h3>
             <hr class="my-4">
             <div class="row">
-                <div class="col-sm-3">
-                    <h4 class="current">Current Weather:</h4>
+                <div class="col-sm-6">
+                    <h4 class="current">Current:</h4>
                     <h5>
-                        <%= @forecast["current"]["weather"][0]["main"] %>
+                        <%= @forecast["current"]["temp"].round(0) %> <sup>o</sup>F
                     </h5>
                     <h5>
-                        <%= @forecast["current"]["temp"].round(1) %> <sup>o</sup>C
+                       <%= @forecast["current"]["weather"][0]["main"] %>
                     </h5>
+                    
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <% if @forecast["current"]["weather"][0]["main"] == "Clear" %>
                         <img src="http://openweathermap.org/img/wn/01d@2x.png">
                     <% elsif @forecast["current"]["weather"][0]["main"] == "Rain" %>
                         <img src="http://openweathermap.org/img/wn/10d@2x.png">
                     <% elsif @forecast["current"]["weather"][0]["main"] == "Clouds" %>
-                        <img src="http://openweathermap.org/img/wn/02d@2x.png">
+                        <img src="http://openweathermap.org/img/wn/04d@2x.png">
                     <% elsif @forecast["current"]["weather"][0]["main"] == "Snow" %>
                         <img src="http://openweathermap.org/img/wn/13d@2x.png">
                     <% elsif @forecast["current"]["weather"][0]["main"] == "Drizzle" %>
@@ -62,17 +57,17 @@
                 </div>
             </div>
             <hr class="my-4">
-            <h4>7 Day Weather Forecast</h4>
-            <div class="row weather-forecast">
+            <h4>7-Day Forecast</h4>
+            <div class="row">
                 <% for day in @forecast["daily"] %>
-                    <div class="col-sm-1.8">
-                        <h5 class="wf-title"><%= day["weather"][0]["main"] %></h5>
+                    <div class="col-sm">
+                    <h5 class="wf-icons"><%= day["weather"][0]["main"] %></h5>
                         <% if day["weather"][0]["main"] == "Clear" %>
                             <img src="http://openweathermap.org/img/wn/01d@2x.png">
                         <% elsif day["weather"][0]["main"] == "Rain" %>
                             <img src="http://openweathermap.org/img/wn/10d@2x.png">
                         <% elsif day["weather"][0]["main"] == "Clouds" %>
-                            <img src="http://openweathermap.org/img/wn/02d@2x.png">
+                            <img src="http://openweathermap.org/img/wn/04d@2x.png">
                         <% elsif day["weather"][0]["main"] == "Snow" %>
                             <img src="http://openweathermap.org/img/wn/13d@2x.png">
                         <% elsif day["weather"][0]["main"] == "Drizzle" %>
@@ -82,8 +77,9 @@
                         <% else %>
                             <img src="http://openweathermap.org/img/wn/50d@2x.png">
                         <% end %>
-                        <p class="wf-text1"><strong><%= day["temp"]["max"].round(1) %> <sup>o</sup>C</strong></p>
-                        <p class="wf-text2"><%= day["temp"]["min"].round(1) %> <sup>o</sup>C</p>
+                        <p class="wf-max"><strong>H <%= day["temp"]["max"].round(0) %> <sup>o</sup>F</strong></p>
+                        <p class="wf-min">L <%= day["temp"]["min"].round(0) %> <sup>o</sup>F</p>                   
+                        
                     </div>
                 <% end %>
             </div>
@@ -91,25 +87,20 @@
     </div>
 
     <div class="container mt-5">
-      <h2 class="title">Headlines</h2>
+      <h2 class="title">Click to Read Today's Top News Stories</h2>
     </div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <% for news in @news["articles"] %>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<%= news["urlToImage"] %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= news["title"] %></h5>
-                            <p class="card-text"><%= news["content"] %></p>
-                            <a href="<%= news["url"] %>" class="btn btn-primary card-btn">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
-        </div>
-    </div>  
+<% for news in @news["articles"] %>    
+<div class="list-group">
+<div class="container">
+  <a href="<%= news["url"] %> class="list-group-item active">
+    <h6><%= news["title"] %></h6>
+  </a>
+  </div>
+</div>
+<% end %>
+
+</body>
 
 
     <!-- Optional JavaScript -->
